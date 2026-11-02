@@ -1,0 +1,18 @@
+{
+  "date":"2026-10-31",
+  "purpose":"Two diagnostic interventions on corrected variant-A; no main-project changes",
+  "mesh":"M2, 525 nodes, 1920 tetrahedra",
+  "loads":[1.0,1.01,1.02,1.05],
+  "prefix":{"loads":[1.0,1.01,1.02],"max_iter":100,"initial_dbc_stiffness":1e8},
+  "groups":[
+    {"name":"control","final_max_iter":100,"final_initial_k":1e8},
+    {"name":"iteration300","final_max_iter":300,"final_initial_k":1e8},
+    {"name":"penalty1e10","final_max_iter":100,"final_initial_k":1e10}
+  ],
+  "fixed":{"tol":1e-10,"youngs":1e6,"poisson":0.3,"static":true,"line_search":"variant-A unchanged","k_adaptation":"variant-A unchanged; not fixed k"},
+  "acceptance":"all original tension_check thresholds unchanged",
+  "per_process_timeout_seconds":120,
+  "total_S1_compute_budget_seconds":360,
+  "stop":"No M3, no further parameter scan, no merging changes",
+  "interpretation":"force cancellation measured on unsatisfied DBC nodes; satisfied nodes may carry eliminated reactions; high initial penalty is an intervention, not proof of sole cause"
+}

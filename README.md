@@ -27,7 +27,7 @@ cmake --build build -j 3
 ctest --test-dir build --output-on-failure
 ```
 
-viewer、PNG 和视频功能依构建选项分别使用 GLFW/OpenGL、zlib 与 ffmpeg。不同阶段的 runner、命令及设计见 [实验索引](EXPERIMENTS.md)。历史脚本部分保留旧机器的绝对路径和构建位置；使用前应按自己的环境检查，不应覆盖原始记录。
+viewer、PNG 和视频功能依构建选项分别使用 GLFW/OpenGL、zlib 与 ffmpeg。不同阶段的 runner、命令及设计见 [实验索引](EXPERIMENTS.md)。脚本以普通文本文件导入，运行 shell 脚本时可使用 `bash path/to/script.sh`。历史脚本部分保留旧机器的绝对路径和构建位置；使用前应按自己的环境检查，不应覆盖原始记录。
 
 ## 输入与第三方内容
 

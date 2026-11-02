@@ -1,0 +1,14 @@
+{
+  "name": "fiction",
+  "layout_version": 2,
+  "simulator": "simulator",
+  "planning": "planning",
+  "reports": "simulator/docs",
+  "results": "simulator/output/validation",
+  "figures": "figures/validation",
+  "workspaces": "experiments/workspaces",
+  "writing": "writing",
+  "assets": "assets",
+  "consolidation_manifest": "maintenance/20261031-consolidation/moves.json",
+  "symlinks_allowed": false
+}

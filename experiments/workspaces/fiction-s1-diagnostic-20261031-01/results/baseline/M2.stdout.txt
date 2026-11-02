@@ -1,0 +1,4 @@
+S1 mesh=/home/steven/mjx/Archive/fiction/output/validation/s1-20261030-01/meshes/M2.msh nodes=525 tets=1920 volume=0.0025 mass=2.5
+load=1 t=1 energy=-2.135044278e-14 reaction=3.914247843e-13 affine_free=0 J=[1,1] iter=0 converged=1 solver=CHOLMOD PASS
+load=1.01 t=0.9970157966 energy=0.124361915 reaction=24.80912121 affine_free=6.894784743e-11 J=[1.003980903,1.003980905] iter=38 converged=1 solver=CHOLMOD PASS
+load=1.02 t=0.9940627789 energy=0.4945411827 reaction=49.22476104 affine_free=5.383220129e-06 J=[1.007878732,1.007989094] iter=100 converged=0 solver=CHOLMOD FAIL

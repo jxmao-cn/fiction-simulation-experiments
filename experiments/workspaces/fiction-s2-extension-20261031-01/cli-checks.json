@@ -1,0 +1,51 @@
+[
+  {
+    "args": [
+      "--help"
+    ],
+    "returncode": 0,
+    "output": "cantilever_check --mesh FILE --csv FILE --state FILE [--trace-dir DIR] [--max-iter N] [--tol VALUE] [--initial-alpha VALUE]\n"
+  },
+  {
+    "args": [
+      "--mesh",
+      "unused",
+      "--csv",
+      "unused.csv",
+      "--state",
+      "unused-state.csv",
+      "--initial-alpha",
+      "2"
+    ],
+    "returncode": 2,
+    "output": "S2 ERROR: --initial-alpha \u5fc5\u987b\u5728 (0,1] \u5185\n"
+  },
+  {
+    "args": [
+      "--mesh",
+      "unused",
+      "--csv",
+      "unused.csv",
+      "--state",
+      "unused-state.csv",
+      "--tol",
+      "nan"
+    ],
+    "returncode": 2,
+    "output": "S2 ERROR: --tol \u5fc5\u987b\u662f\u6709\u9650\u6b63\u6570\n"
+  },
+  {
+    "args": [
+      "--mesh",
+      "unused",
+      "--csv",
+      "unused.csv",
+      "--state",
+      "unused-state.csv",
+      "--max-iter",
+      "1.5"
+    ],
+    "returncode": 2,
+    "output": "S2 ERROR: --max-iter \u5fc5\u987b\u662f\u6b63\u6574\u6570\n"
+  }
+]

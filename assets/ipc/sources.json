@@ -1,0 +1,22 @@
+[
+  {
+    "file": "assets/ipc/tetMeshes/torus.msh",
+    "source": "/home/steven/mjx/Archive/IPC/input/tetMeshes/torus.msh",
+    "sha256": "fb3cc5c68089143c3fbbd97dce2b8f1524674bd80e932ef14d76563ca5206e15"
+  },
+  {
+    "file": "assets/ipc/tetMeshes/sphere1K.msh",
+    "source": "/home/steven/mjx/Archive/IPC/input/tetMeshes/sphere1K.msh",
+    "sha256": "45316e55ebde1bebf480b25814f011ed60d15d7c8704b56cf15949e401425bc5"
+  },
+  {
+    "file": "assets/ipc/tetMeshes/Armadillo13K.msh",
+    "source": "/home/steven/mjx/Archive/IPC/input/tetMeshes/Armadillo13K.msh",
+    "sha256": "03beaf3d4c9692a10664a3a90f1baa8c10d43d7ba47126437d420b68a36e6bce"
+  },
+  {
+    "file": "assets/ipc/tetMeshes/Armadillo28K.msh",
+    "source": "/home/steven/mjx/Archive/IPC/input/tetMeshes/Armadillo28K.msh",
+    "sha256": "73395043488c6c1a99117ce750e4a7ac1f2f3d8849ccd8f18be277a99c0e359b"
+  }
+]

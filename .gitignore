@@ -1,0 +1,12 @@
+**/build/
+build/
+__pycache__/
+*.py[cod]
+*.o
+*.a
+*.so
+*.dylib
+*.exe
+.DS_Store
+output/
+outputs/

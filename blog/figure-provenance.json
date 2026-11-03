@@ -1,0 +1,828 @@
+{
+  "date": "2026-11-02",
+  "items": [
+    {
+      "asset": "assets/s3-bend-poster.png",
+      "kind": "copied",
+      "source": "local-archive:fiction/simulator/output/validation/s3-visual-main-20261102-01/raw_frames/frame_0025.png",
+      "source_sha256": "ae06310cfe8e7ba72e71a67c02ada3fdebd3654c06f63e542dbe70f70b743f9f",
+      "output_sha256": "ae06310cfe8e7ba72e71a67c02ada3fdebd3654c06f63e542dbe70f70b743f9f"
+    },
+    {
+      "asset": "assets/s3t-twist-poster.png",
+      "kind": "copied",
+      "source": "local-archive:fiction/simulator/output/validation/s3t-visual-main-20261102-02/raw_frames/frame_0050.png",
+      "source_sha256": "aade49888a6c9c51a60654ad25d539844346be331aa231a56328e6cf15d6e996",
+      "output_sha256": "aade49888a6c9c51a60654ad25d539844346be331aa231a56328e6cf15d6e996"
+    },
+    {
+      "asset": "assets/s4-torus-poster.png",
+      "kind": "copied",
+      "source": "local-archive:fiction/figures/validation/s4-nonrod-20261031-01/keyframe_t1000.png",
+      "source_sha256": "7e334869c1503704625cfa5a9abb971f3e76a249b0da04b7c72f784ca910c431",
+      "output_sha256": "7e334869c1503704625cfa5a9abb971f3e76a249b0da04b7c72f784ca910c431"
+    },
+    {
+      "asset": "assets/s4-torus.mp4",
+      "kind": "copied",
+      "source": "local-archive:fiction/figures/validation/s4-nonrod-20261031-01/video.mp4",
+      "source_sha256": "087902c09d9b2fbe0b4d21f68f59a13c82dce4c6f86703712da0a1598c7468af",
+      "output_sha256": "087902c09d9b2fbe0b4d21f68f59a13c82dce4c6f86703712da0a1598c7468af"
+    },
+    {
+      "asset": "assets/s3-four-dt.png",
+      "kind": "copied",
+      "source": "local-archive:fiction/figures/validation/s3-dtmesh-ref-20261102-01/tip-trajectories.png",
+      "source_sha256": "042c0b420b7d6eebed08bcb45e292fb7e483fde34b4178d8db6fd3e990589d80",
+      "output_sha256": "042c0b420b7d6eebed08bcb45e292fb7e483fde34b4178d8db6fd3e990589d80"
+    },
+    {
+      "asset": "assets/s5-step-timing.png",
+      "kind": "copied",
+      "source": "local-archive:fiction/figures/validation/s5-scale-20261031-01/s5-scale-step-timing.png",
+      "source_sha256": "5e267806d94e07225db75296b1b5d7f6dc1382ab2e143819aba1169b0e5cf4dd",
+      "output_sha256": "5e267806d94e07225db75296b1b5d7f6dc1382ab2e143819aba1169b0e5cf4dd"
+    },
+    {
+      "asset": "assets/s6a-sixteen.png",
+      "kind": "replotted_from_saved_node_states",
+      "source": "local-archive:fiction/figures/validation/s6a-layout-main-20261102-01/s6a-16-body-layout.png",
+      "source_sha256": "658d7891e4ae65f6c7e000fc845e0c2c088be779a7e276dc0454128834905e07",
+      "output_sha256": "b1a13432fb5621b87a5fa7a21dda91b9e20f6f6c9a2301b5c7eca2a98479b44a",
+      "previous_output_sha256": "658d7891e4ae65f6c7e000fc845e0c2c088be779a7e276dc0454128834905e07",
+      "title_revision": "descriptive experiment title; original data retained",
+      "generator": "make_multibody_figure.py",
+      "inputs": [
+        {
+          "path": "local-archive:fiction/assets/ipc/tetMeshes/sphere1K.msh",
+          "sha256": "45316e55ebde1bebf480b25814f011ed60d15d7c8704b56cf15949e401425bc5"
+        },
+        {
+          "path": "local-archive:fiction/simulator/output/validation/s6a-sixteen-main-20261102-01/state.csv",
+          "sha256": "1c6f0907039faecbb24b94568105683fcfe1e03987a5777454da92d66dc09632"
+        }
+      ]
+    },
+    {
+      "asset": "assets/t0-oscillator.png",
+      "kind": "data_plot",
+      "inputs": [
+        {
+          "path": "local-archive:fiction/simulator/output/validation/stage0-20261030-01/t0.log",
+          "sha256": "370ade4682468c950cf971967d97da761f0df52cbf7dcf5e71974ec8b71b8af5"
+        }
+      ],
+      "generator": "make_figures.py",
+      "output_sha256": "5be64b36ce9b6986e9fc2b07b3dc49c116211dd46d1992d153b132ecf595fab4",
+      "previous_output_sha256": "3f9e47a8b71d8cef358417ea51b7bc9a07e0ba14d941453fe972d1880e8fad1a",
+      "title_revision": "descriptive experiment title; original data retained"
+    },
+    {
+      "asset": "assets/s1-tension-reaction.png",
+      "kind": "data_plot",
+      "inputs": [
+        {
+          "path": "local-archive:fiction/simulator/output/validation/s1-merged-20261031-01/M1.csv",
+          "sha256": "d9479d64f48d3dcddc2bbf646181967b027ebf9ca0f69ed54849e1d90a917145"
+        },
+        {
+          "path": "local-archive:fiction/simulator/output/validation/s1-merged-20261031-01/M2.csv",
+          "sha256": "aa566481bcb4f20290824d89d84b67c88a600836257c81dff280aa2dffb62690"
+        },
+        {
+          "path": "local-archive:fiction/simulator/output/validation/s1-merged-20261031-01/M3.csv",
+          "sha256": "ac9c3fd39b3d746de5a0d49a971a36065f709777fa857ccc6bfe591d3e5fcc70"
+        }
+      ],
+      "generator": "make_figures.py",
+      "output_sha256": "ef5e67e32598ef2e55449c74577c672628af2c4e4e06829dbfd19c95fc87d6ea",
+      "previous_output_sha256": "34c34fd0b9933358359587a6e893120b46c37f413adb664062bb6752c066125a",
+      "title_revision": "descriptive experiment title; original data retained"
+    },
+    {
+      "asset": "assets/s2-mesh-refinement.png",
+      "kind": "data_plot",
+      "inputs": [
+        {
+          "path": "local-archive:fiction/figures/validation/s2-extension-20261031-01/comparison.csv",
+          "sha256": "3ec57b8ddbefb67ec87c112372c9e3ba1b4d5e6eb4369b9f3708d07da26255d9"
+        }
+      ],
+      "generator": "make_figures.py",
+      "output_sha256": "5e3054ab1eaa834831931481662030efaa2049fa39f1f0b2bfc7d598a638bef2",
+      "previous_output_sha256": "28117e17f3c18e849a4a4a6b76e531dc6fc8b657d97c09897c1d62e427af8ed4",
+      "title_revision": "descriptive experiment title; original data retained"
+    },
+    {
+      "asset": "assets/s3-original-trajectories.png",
+      "kind": "data_plot",
+      "inputs": [
+        {
+          "path": "local-archive:fiction/simulator/output/validation/s3-bend-20261031-01/dt-sweep/dt-0.01/steps.csv",
+          "sha256": "11e5cedb120860fd28ec37d88660429946771f0b17aed822802408dc53441c61"
+        },
+        {
+          "path": "local-archive:fiction/simulator/output/validation/s3-bend-20261031-01/dt-sweep/dt-0.005/steps.csv",
+          "sha256": "d059a40edcf18334cdf9aa9642ffb33304974dafd2b8c001ef574cd91de5a207"
+        },
+        {
+          "path": "local-archive:fiction/simulator/output/validation/s3-bend-20261031-01/dt-sweep/dt-0.0025/steps.csv",
+          "sha256": "f1eb75df08917656c52854a04d84da61cb7e22738412dd90856a0f3cad939987"
+        }
+      ],
+      "generator": "make_figures.py",
+      "output_sha256": "ae51558db0dfec5a6f31839db6bb32ec8b06cf34e2ed8c689755251ebe09af15",
+      "previous_output_sha256": "ab3dc52070dc3983aeb2d5cd7a51e1fa5ce49870789d31894550c7c741b58825",
+      "title_revision": "descriptive experiment title; original data retained"
+    },
+    {
+      "asset": "assets/s3t-angle-torque.png",
+      "kind": "data_plot",
+      "inputs": [
+        {
+          "path": "local-archive:fiction/simulator/output/validation/s3t-twist-20261031-01/steps.csv",
+          "sha256": "a21ac6bdbd99423f6fe5fc7983f742fe8c160c72cdd7a8e071cc44db8419bae6"
+        }
+      ],
+      "generator": "make_figures.py",
+      "output_sha256": "df2e5bdce7395e4fd2053c6076c23ae0744daeda4aa95a2ddcf02e7b2ac966c4",
+      "previous_output_sha256": "9c01f63b758d2f5f4d098dbf350ac9419db1db24e5d1894cf734f64773f34233",
+      "title_revision": "descriptive experiment title; original data retained"
+    },
+    {
+      "asset": "assets/s3-bend.mp4",
+      "kind": "encoded_from_saved_frames",
+      "input_frames": "local-archive:fiction/simulator/output/validation/s3-visual-main-20261102-01/raw_frames",
+      "frame_count": 51,
+      "fps": 25,
+      "frame_hashes": [
+        {
+          "name": "frame_0000.png",
+          "sha256": "14154a5e40d03544cec483136db17822ca182cbd8dd4d4b913edbf687cf83ca6"
+        },
+        {
+          "name": "frame_0001.png",
+          "sha256": "6b4d59e3c5409534e61565f6a65b20031a3cc64ec2d065abbcaf7f96ec51c16c"
+        },
+        {
+          "name": "frame_0002.png",
+          "sha256": "afb9e9f8db992a3c12a7d24992c7b0622c539f5437ab4c5a21b55b529e3790b3"
+        },
+        {
+          "name": "frame_0003.png",
+          "sha256": "23fc8936378b8f747155ebfceac64f8446771d86b5b79114a493cfde95d9df28"
+        },
+        {
+          "name": "frame_0004.png",
+          "sha256": "13ccceab9156e162a1aabf761bda34e158b93fb97ea1424d619ce7f5237471d2"
+        },
+        {
+          "name": "frame_0005.png",
+          "sha256": "f77cdd11ddfb5db7d08900d2c01b1685262cafa5086076de5149f611c5bf48ea"
+        },
+        {
+          "name": "frame_0006.png",
+          "sha256": "e44db8501f684c21b8755cbf9a7c2467ed4bbf803a17f358afaa132719d31c0f"
+        },
+        {
+          "name": "frame_0007.png",
+          "sha256": "e88ee4da44241a913d6ea846ad283c4f0f81af7869c9c81158ad1814516b7114"
+        },
+        {
+          "name": "frame_0008.png",
+          "sha256": "711d6cb44e185c8085c38a3ea52a5a37a43c1747a92bcf007f78ef01e7ef9d76"
+        },
+        {
+          "name": "frame_0009.png",
+          "sha256": "50c541a37c695bce39a1436bbd6bcdf31491cc6632a3f05f194145cbc3d10a3b"
+        },
+        {
+          "name": "frame_0010.png",
+          "sha256": "e81bb551c50fc9de56df7bfcdcad5c6cc5ab78a825b76b3a75344d87ed3aed09"
+        },
+        {
+          "name": "frame_0011.png",
+          "sha256": "ba0ff21cd59aaaadd429e06c352da902ce183fbfb3a9c5f938e3b6ff83d8c46c"
+        },
+        {
+          "name": "frame_0012.png",
+          "sha256": "a70c01cbdeaa4d5372381d57d7c5fe18c866db91c7dee8825d1adaa860b7d788"
+        },
+        {
+          "name": "frame_0013.png",
+          "sha256": "348a7c6c1b602fbccb8aa4c56d9c3992d1781b4b95250c69ee7a4ba1162821a2"
+        },
+        {
+          "name": "frame_0014.png",
+          "sha256": "ebb77583b058355bbbd8ce4a513f9cc906f9170a5c5303480c426dfeb46f1f75"
+        },
+        {
+          "name": "frame_0015.png",
+          "sha256": "162fae953cb95c4ad1663a27b5af43dc28c3d7426fdc0ac85559be814cf5c67b"
+        },
+        {
+          "name": "frame_0016.png",
+          "sha256": "ef62aed00957f9e3a8bd4d2ccb0c46c325bdf45333e2668f68b7b9b452b8f9ec"
+        },
+        {
+          "name": "frame_0017.png",
+          "sha256": "7440f338e516cd6d4c44007824cadc0bc2d79b85d411e70faf51fddef5214b2e"
+        },
+        {
+          "name": "frame_0018.png",
+          "sha256": "efd74ce2f22e15843e3662001bf0b47cb89e3be63df378dc43729ea9802aec2b"
+        },
+        {
+          "name": "frame_0019.png",
+          "sha256": "d4c55e0180c8a31da6253faed45a3d4fe41283939a5be8f8ba0890e13dcfa65d"
+        },
+        {
+          "name": "frame_0020.png",
+          "sha256": "56604a7cd9ccb91271caf006ae2821c438f5c0be47560880e7cc866aa7729ee5"
+        },
+        {
+          "name": "frame_0021.png",
+          "sha256": "f23b9ff3dbe0cdfb525383470ebf403bd007df2eca2289a0257e9dea38a6902a"
+        },
+        {
+          "name": "frame_0022.png",
+          "sha256": "8ed916a068ce62d2df3b368f32227db62b305afd5e4e1e76542a9622f2f6d504"
+        },
+        {
+          "name": "frame_0023.png",
+          "sha256": "cf22b6a51a77255b4ee720fd12abb4e5204a07f9fdadc729ef749065a76580ad"
+        },
+        {
+          "name": "frame_0024.png",
+          "sha256": "bd6fd89721f12ebf6e7ebff967e993a8751ea634878080f22d260427dfb353bc"
+        },
+        {
+          "name": "frame_0025.png",
+          "sha256": "ae06310cfe8e7ba72e71a67c02ada3fdebd3654c06f63e542dbe70f70b743f9f"
+        },
+        {
+          "name": "frame_0026.png",
+          "sha256": "ddc6ae7b73546fcb289896ed4e980dcf6d5b926ed5efa99d6854e80db4a7c3c4"
+        },
+        {
+          "name": "frame_0027.png",
+          "sha256": "a1ecdde2440ed6c7b551f4b4057c99a8c418013e3d41f01326554b5f35097f53"
+        },
+        {
+          "name": "frame_0028.png",
+          "sha256": "840dca53317b2ee6f6ab62e2fef68f2f3a008de597912cd56b6582e02ca7c680"
+        },
+        {
+          "name": "frame_0029.png",
+          "sha256": "548a3a4646f6831df1482e0c9e0a367bc064de82af1676b10128b7338fd26503"
+        },
+        {
+          "name": "frame_0030.png",
+          "sha256": "7b23940554507f331327e763f584ff6d54fad41005b8858ba9e910f35b085205"
+        },
+        {
+          "name": "frame_0031.png",
+          "sha256": "b4ec2687e2f41765d52947b436888877cef401c1d3065379152790d36bc0f75b"
+        },
+        {
+          "name": "frame_0032.png",
+          "sha256": "227391fb50bc50c268db634bf3311623d2706da929bcd63fe65cff98d609ac72"
+        },
+        {
+          "name": "frame_0033.png",
+          "sha256": "c7885263ac0ade5fd774da7ed509c6d8d34512ddd9ed847a4b065ad7199b388c"
+        },
+        {
+          "name": "frame_0034.png",
+          "sha256": "91dd867e056579db050fad27be3185b5ff5c2bf822a052a592135e443cd630fc"
+        },
+        {
+          "name": "frame_0035.png",
+          "sha256": "08bbc0dbad1293c4ef1351ccd4553f3be8895ef5c68536a63afbe9d833ecfa22"
+        },
+        {
+          "name": "frame_0036.png",
+          "sha256": "70f6ccd33f71be14b75d9584740a90d999ebe79846688be91274bdbafbf901f6"
+        },
+        {
+          "name": "frame_0037.png",
+          "sha256": "edd9755ef4cd0d48522a4e50d2fea0f48277909dcf54f6228dc78b104ce95e48"
+        },
+        {
+          "name": "frame_0038.png",
+          "sha256": "0637b0c0d6d1bf377060282ea0acd293a82fbd896c05f54d7e7c59d3b5e041b7"
+        },
+        {
+          "name": "frame_0039.png",
+          "sha256": "b9e7ae85ace819d2ad111b2b2efdd46a9979007527f16088fcfacace2238b0aa"
+        },
+        {
+          "name": "frame_0040.png",
+          "sha256": "107f01fd68847431a1fbd664032344125cf07d1ce2e755d775cfe3015ee15a63"
+        },
+        {
+          "name": "frame_0041.png",
+          "sha256": "99b4448ca0f3c1e4512f81346b5a271cf9fb128a616e2b68efcba68fb6495348"
+        },
+        {
+          "name": "frame_0042.png",
+          "sha256": "0b5261681c45051a2682d053605d3462d18bc477ab6e15e1c531123aa74aebd2"
+        },
+        {
+          "name": "frame_0043.png",
+          "sha256": "5b139cb956b5631153d1842a372be4fdbe3961f1eaccdf0a12bfa3e6f51aacf4"
+        },
+        {
+          "name": "frame_0044.png",
+          "sha256": "0a968f2d033c64bcfa382e522283b3ca1f60a1fd719e547a1c734486a9335dcd"
+        },
+        {
+          "name": "frame_0045.png",
+          "sha256": "652a637b65ad95e0fb89281bb854c58b6d06cbe37feb366a1320fd268d24012a"
+        },
+        {
+          "name": "frame_0046.png",
+          "sha256": "fc79c949ab5f5e3ad461debfc595d31ddffac278bf005e6b8cb43cb4e316826c"
+        },
+        {
+          "name": "frame_0047.png",
+          "sha256": "af14e0aeec39531eb3a9c1feb9d742011716c12506b8a4607b98ad5d5f434eef"
+        },
+        {
+          "name": "frame_0048.png",
+          "sha256": "3f531c266da4cc50781afabe55cf8ae455acd5d5024228da07915d7ac662552a"
+        },
+        {
+          "name": "frame_0049.png",
+          "sha256": "d9b381e336c4e5834ad88a0f2b2df645af82388d2d52ee3921764a5169efa348"
+        },
+        {
+          "name": "frame_0050.png",
+          "sha256": "2de96899ca4e874976a3395d40b2b65e46b53392f9a668fc7d3af734ae79ca67"
+        }
+      ],
+      "output_sha256": "4e86b0497d0df07714422a130ec37e79e8582ecd84fffc076c56ae121f858532",
+      "command": "ffmpeg -framerate 25 -i frame_%04d.png -frames:v 51 -c:v libx264 -pix_fmt yuv420p -movflags +faststart s3-bend.mp4"
+    },
+    {
+      "asset": "assets/s3t-twist.mp4",
+      "kind": "encoded_from_saved_frames",
+      "input_frames": "local-archive:fiction/simulator/output/validation/s3t-visual-main-20261102-02/raw_frames",
+      "frame_count": 51,
+      "fps": 20,
+      "frame_hashes": [
+        {
+          "name": "frame_0000.png",
+          "sha256": "14154a5e40d03544cec483136db17822ca182cbd8dd4d4b913edbf687cf83ca6"
+        },
+        {
+          "name": "frame_0001.png",
+          "sha256": "fa5b5b2fff1bd3bf546d521a2e332919e2f52c65ee624288700f0e2a38229b79"
+        },
+        {
+          "name": "frame_0002.png",
+          "sha256": "68776f405145d6d0a2c22d02845b3f442c104aaab3f198aef67a1ea09cba7466"
+        },
+        {
+          "name": "frame_0003.png",
+          "sha256": "b468dda2b1bfa1490826eef4f61e59aa18d464e14e7155ab2412218042e1e88f"
+        },
+        {
+          "name": "frame_0004.png",
+          "sha256": "997b80a452615c071e03e6d16769e3ebfb83dd5d87c01b1577060325eb3e3985"
+        },
+        {
+          "name": "frame_0005.png",
+          "sha256": "7e44bdea4e1381ca4cd0a85032570e10b752e654f7ae0ba9adccbd073daef833"
+        },
+        {
+          "name": "frame_0006.png",
+          "sha256": "6245b9c035fdfc43be59f95615d31375f2774af6d0dd192d85f8b03cdf0b94ae"
+        },
+        {
+          "name": "frame_0007.png",
+          "sha256": "e120ea0414ecc72eaed5d9e7f6f5d2a48306ece61673f21b9d05336ceb7ebb9c"
+        },
+        {
+          "name": "frame_0008.png",
+          "sha256": "82668cf1de6e85cfc1b16b5ca54e30a9d23c7f41df1d8dd92cd27a45cd0189dd"
+        },
+        {
+          "name": "frame_0009.png",
+          "sha256": "4f2f571735dedaa9a7ddc5534e82a51e7383bee41c152f153fb893ae58787af1"
+        },
+        {
+          "name": "frame_0010.png",
+          "sha256": "2edde95635959230655d11284f7ff2a625be18c9c67ac5dec8762ee3719fa13d"
+        },
+        {
+          "name": "frame_0011.png",
+          "sha256": "030bd9dffb90badb5ddded2c504b2555892c4db01ad4f6774b751a4f11e29a43"
+        },
+        {
+          "name": "frame_0012.png",
+          "sha256": "03d49865c1d472bd9f27744ee022241162b22ed6b78deb8f47c9fc2b1ea27ff1"
+        },
+        {
+          "name": "frame_0013.png",
+          "sha256": "fab975a6aea43de785d3c77056a993f2b249b47ef1aec6215ac0a150c1925226"
+        },
+        {
+          "name": "frame_0014.png",
+          "sha256": "3f98807de2dbc869759a67bd0ad850adffe905f02bea0b47fa6e221d42e6571f"
+        },
+        {
+          "name": "frame_0015.png",
+          "sha256": "0def8754a191ef038c75e0f7a4c50078f0bdfe9ef01b7948c49a27971ebeb382"
+        },
+        {
+          "name": "frame_0016.png",
+          "sha256": "6dc963ebfa81be0827a94efe6959e829a3b3f4be97af9dc1fafda4c6bb180009"
+        },
+        {
+          "name": "frame_0017.png",
+          "sha256": "ddf4dc04ca38d9c99c1a23508a06bb59632609950bbc282e6125ee09b4920e8b"
+        },
+        {
+          "name": "frame_0018.png",
+          "sha256": "d23c1d5c6620fc514cf04b23b9ff8173a3bcfededdea2eec6e35aa682e2a94f3"
+        },
+        {
+          "name": "frame_0019.png",
+          "sha256": "5472091ed4cc81e3f6c451540413b3c22c7941b13297cd73269265b2a5951800"
+        },
+        {
+          "name": "frame_0020.png",
+          "sha256": "1fb0a39650c43a2b9d4dcc58529a5bba68d5db233b5eff1ea6fc544a2032479b"
+        },
+        {
+          "name": "frame_0021.png",
+          "sha256": "486f8ef4399a02de0672fdaa7759de8bb9f71c24623aad8904c38b99c44fe505"
+        },
+        {
+          "name": "frame_0022.png",
+          "sha256": "e7b8eb1b93ab2f3e1a1220c19631f15c89e61faf8c9efc172cf8eb2d8d5a677d"
+        },
+        {
+          "name": "frame_0023.png",
+          "sha256": "1bc623c85d4652f5019693709edea48102b53c71b44c32cf96e98ae5d4734565"
+        },
+        {
+          "name": "frame_0024.png",
+          "sha256": "2d6ca10521f7d0e01a14dd23f3b3b8a512a1c2aded60473edf886bab44b25ad1"
+        },
+        {
+          "name": "frame_0025.png",
+          "sha256": "6e60f3f8644e989b1f54a22aff340dc1c73b24a3d6a52a699bcec449d1f4224d"
+        },
+        {
+          "name": "frame_0026.png",
+          "sha256": "694b3b24371b14ce40752304c02b844eb53a174ed9a1e1789521728faa96b651"
+        },
+        {
+          "name": "frame_0027.png",
+          "sha256": "4783611cd693b07e4545f375ea32a145e0cc15edba98ec8847705a614b289c7b"
+        },
+        {
+          "name": "frame_0028.png",
+          "sha256": "29f731e6aa6b20a9b88f778ca17f4aca0aca4e7d802e0ddf194bd7b353356b3a"
+        },
+        {
+          "name": "frame_0029.png",
+          "sha256": "ffe2b1565288ed1f25dbca4f6c89c22a82434d293b184e07fe6b4fb72328dcd1"
+        },
+        {
+          "name": "frame_0030.png",
+          "sha256": "1b5a4e5712a491950ed7198d15fa3c550c7b93e1ed183ff6440c363d5dcf8c4c"
+        },
+        {
+          "name": "frame_0031.png",
+          "sha256": "2f0442db7949ee128d4ca4c7055a0ddc8d57386467eebd83eba4febac04aeae2"
+        },
+        {
+          "name": "frame_0032.png",
+          "sha256": "f6831a897a6dc3f7018bd6ffca45592349860f1532910521bcf9f3fd2579dc41"
+        },
+        {
+          "name": "frame_0033.png",
+          "sha256": "c95f07a654480b7fe9c9e2cb081d323793994b688e5f8e6ba2102cb730b8b4c4"
+        },
+        {
+          "name": "frame_0034.png",
+          "sha256": "c19a72296a6bb9aba073353afff99fe223cd49566ca0c1774d6c73fbe4431550"
+        },
+        {
+          "name": "frame_0035.png",
+          "sha256": "af560c5b6fae4e312ab73ac78d10c1dd225d6c39132b2d6b9d10ce5620dd832f"
+        },
+        {
+          "name": "frame_0036.png",
+          "sha256": "3fef80f6b47df150e307db92034958b737f6854e560ba8f4e48e4510fd1868db"
+        },
+        {
+          "name": "frame_0037.png",
+          "sha256": "3dbb5ac918b449c5f400e1af1d50ea860f3304cd8f8f8ddda851bc1bfbf51a04"
+        },
+        {
+          "name": "frame_0038.png",
+          "sha256": "ada2968e17515e456850983a27f4643c9b49ca8b015762192b3539e1532a84fa"
+        },
+        {
+          "name": "frame_0039.png",
+          "sha256": "53dfb726aa5a8aaa8db3e8b4452ef2260a3bdf68cb41d9d7543ee9b7d740ae68"
+        },
+        {
+          "name": "frame_0040.png",
+          "sha256": "aade49888a6c9c51a60654ad25d539844346be331aa231a56328e6cf15d6e996"
+        },
+        {
+          "name": "frame_0041.png",
+          "sha256": "aade49888a6c9c51a60654ad25d539844346be331aa231a56328e6cf15d6e996"
+        },
+        {
+          "name": "frame_0042.png",
+          "sha256": "aade49888a6c9c51a60654ad25d539844346be331aa231a56328e6cf15d6e996"
+        },
+        {
+          "name": "frame_0043.png",
+          "sha256": "aade49888a6c9c51a60654ad25d539844346be331aa231a56328e6cf15d6e996"
+        },
+        {
+          "name": "frame_0044.png",
+          "sha256": "aade49888a6c9c51a60654ad25d539844346be331aa231a56328e6cf15d6e996"
+        },
+        {
+          "name": "frame_0045.png",
+          "sha256": "aade49888a6c9c51a60654ad25d539844346be331aa231a56328e6cf15d6e996"
+        },
+        {
+          "name": "frame_0046.png",
+          "sha256": "aade49888a6c9c51a60654ad25d539844346be331aa231a56328e6cf15d6e996"
+        },
+        {
+          "name": "frame_0047.png",
+          "sha256": "aade49888a6c9c51a60654ad25d539844346be331aa231a56328e6cf15d6e996"
+        },
+        {
+          "name": "frame_0048.png",
+          "sha256": "aade49888a6c9c51a60654ad25d539844346be331aa231a56328e6cf15d6e996"
+        },
+        {
+          "name": "frame_0049.png",
+          "sha256": "aade49888a6c9c51a60654ad25d539844346be331aa231a56328e6cf15d6e996"
+        },
+        {
+          "name": "frame_0050.png",
+          "sha256": "aade49888a6c9c51a60654ad25d539844346be331aa231a56328e6cf15d6e996"
+        }
+      ],
+      "output_sha256": "8cfc2df1710db7d580d3cad1f2a2d39f676e854ee5d0965000f76ecb4e5d26dc",
+      "command": "ffmpeg -framerate 20 -i frame_%04d.png -frames:v 51 -c:v libx264 -pix_fmt yuv420p -movflags +faststart s3t-twist.mp4"
+    },
+    {
+      "asset": "assets/scenes/01-one-time-step.png",
+      "kind": "analytic_illustration",
+      "source_catalog": "authoring-workspace:outputs/fiction-scene-visuals-20261103/provenance.json",
+      "generator": "authoring-workspace:outputs/fiction-scene-visuals-20261103/generate_scenes.py",
+      "inputs": [],
+      "output_sha256": "08df6a7467e0cc6fceac6709d75458ea202bd8e6dd24c348a0d1590c265806be"
+    },
+    {
+      "asset": "assets/scenes/02-tetrahedron-configurations.png",
+      "kind": "prescribed_geometry",
+      "source_catalog": "authoring-workspace:outputs/fiction-scene-visuals-20261103/provenance.json",
+      "generator": "authoring-workspace:outputs/fiction-scene-visuals-20261103/generate_scenes.py",
+      "inputs": [
+        "local-archive:fiction/simulator/cpp/examples/mesh_check.cpp"
+      ],
+      "output_sha256": "1815b959861d559cce9067d7d12a70290f7309da48b39960088612c869371021"
+    },
+    {
+      "asset": "assets/scenes/03-uniform-rod-stretch.png",
+      "kind": "prescribed_reference_geometry",
+      "source_catalog": "authoring-workspace:outputs/fiction-scene-visuals-20261103/provenance.json",
+      "generator": "authoring-workspace:outputs/fiction-scene-visuals-20261103/generate_scenes.py",
+      "inputs": [
+        "local-archive:fiction/simulator/output/validation/s1-merged-20261031-01/M3.csv",
+        "local-archive:fiction/simulator/cpp/examples/tension_check.cpp"
+      ],
+      "output_sha256": "d7e829100cdac64e207c5b47769ecae89499ce29296eb1eed0216f7c71da81ba"
+    },
+    {
+      "asset": "assets/scenes/03-uniform-rod-stretch.gif",
+      "kind": "prescribed_reference_geometry",
+      "source_catalog": "authoring-workspace:outputs/fiction-scene-visuals-20261103/provenance.json",
+      "generator": "authoring-workspace:outputs/fiction-scene-visuals-20261103/generate_scenes.py",
+      "inputs": [
+        "local-archive:fiction/simulator/output/validation/s1-merged-20261031-01/M3.csv",
+        "local-archive:fiction/simulator/cpp/examples/tension_check.cpp"
+      ],
+      "output_sha256": "4172ff819b9749a061077886945b07570734cc45cb9ced31b2d03c1cc2e9548c"
+    },
+    {
+      "asset": "assets/scenes/04-cantilever-scene.png",
+      "kind": "saved_simulation_states",
+      "source_catalog": "authoring-workspace:outputs/fiction-scene-visuals-20261103/provenance.json",
+      "generator": "authoring-workspace:outputs/fiction-scene-visuals-20261103/generate_scenes.py",
+      "inputs": [
+        "local-archive:fiction/simulator/output/validation/s2-extension-20261031-01/M1-tol1e8/state.csv",
+        "local-archive:fiction/simulator/output/validation/s2-extension-20261031-01/M3-tol1e8/state.csv",
+        "local-archive:fiction/simulator/output/validation/s2-extension-20261031-01/M6-tol1e8/state.csv"
+      ],
+      "output_sha256": "51440e7b64b3b17c500d9730d83fa08bfccf835a4d1d50458a55208d627e953d"
+    },
+    {
+      "asset": "assets/scenes/05-oscillator-scene.png",
+      "kind": "scene_schematic_and_saved_trajectory",
+      "source_catalog": "authoring-workspace:outputs/fiction-scene-visuals-20261103/provenance.json",
+      "generator": "authoring-workspace:outputs/fiction-scene-visuals-20261103/generate_scenes.py",
+      "inputs": [
+        "local-archive:fiction/simulator/output/validation/stage0-20261030-01/t0-trajectory.csv",
+        "local-archive:fiction/simulator/cpp/examples/dynamic_reference_check.cpp"
+      ],
+      "output_sha256": "180999a9a877af7b34a8c35f045c8d2b51382c02f9cdb69ce724892637ad6255"
+    },
+    {
+      "asset": "assets/scenes/06-twist-scene.png",
+      "kind": "saved_simulation_state",
+      "source_catalog": "authoring-workspace:outputs/fiction-scene-visuals-20261103/provenance.json",
+      "generator": "authoring-workspace:outputs/fiction-scene-visuals-20261103/generate_scenes.py",
+      "inputs": [
+        "local-archive:fiction/simulator/output/validation/s3t-twist-20261031-01/state.csv",
+        "local-archive:fiction/simulator/output/validation/s3t-twist-20261031-01/M2.msh",
+        "local-archive:fiction/simulator/output/validation/s3t-twist-20261031-01/state-profile.csv"
+      ],
+      "output_sha256": "40a4cc48aa5ceb5a603736a24f1e72d5416d17df02b310b79c76fa8e3b416bc3"
+    },
+    {
+      "asset": "assets/scenes/07-torus-scene.png",
+      "kind": "saved_simulation_surface_meshes",
+      "source_catalog": "authoring-workspace:outputs/fiction-scene-visuals-20261103/provenance.json",
+      "generator": "authoring-workspace:outputs/fiction-scene-visuals-20261103/generate_scenes.py",
+      "inputs": [
+        "local-archive:fiction/simulator/output/validation/s4-nonrod-20261031-01/final_state.csv",
+        "local-archive:fiction/simulator/output/validation/s4-nonrod-20261031-01/keyframe_t0000.obj",
+        "local-archive:fiction/simulator/output/validation/s4-nonrod-20261031-01/keyframe_t1000.obj",
+        "local-archive:fiction/simulator/output/validation/s4-nonrod-20261031-01/keyframe_t2000.obj"
+      ],
+      "output_sha256": "74bd65876a40afd64efe5232be184e2ae0a51654a198097ebc67ea505258c9e0"
+    },
+    {
+      "asset": "assets/scenes/08-complex-mesh-scene.png",
+      "kind": "saved_reference_geometry_and_boundary_mask",
+      "source_catalog": "authoring-workspace:outputs/fiction-scene-visuals-20261103/provenance.json",
+      "generator": "authoring-workspace:outputs/fiction-scene-visuals-20261103/generate_scenes.py",
+      "inputs": [
+        "local-archive:fiction/simulator/output/validation/s5-54k-main-20261102-01/state.csv",
+        "local-archive:fiction/simulator/output/validation/s5-54k-main-20261102-01/asset_audit.json",
+        "upstream-archive:IPC/input/tetMeshes/Armadillo54K.msh"
+      ],
+      "output_sha256": "93700ee671e3108c2ac698428b7c88493f47804ab8d1c98cf987e8325be7442d"
+    },
+    {
+      "asset": "assets/scenes/09-independent-bodies-scene.png",
+      "kind": "saved_layout_and_structural_schematic",
+      "source_catalog": "authoring-workspace:outputs/fiction-scene-visuals-20261103/provenance.json",
+      "generator": "authoring-workspace:outputs/fiction-scene-visuals-20261103/generate_scenes.py",
+      "inputs": [
+        "local-archive:fiction/simulator/output/validation/s6a-four-main-20261102-01/state.csv"
+      ],
+      "output_sha256": "25d8a72ce64eb07a03dce9f72f321ea4b29557fb7fdab339a72b831d2097f95b"
+    },
+    {
+      "asset": "assets/scenes/10-moving-cantilever-scene.png",
+      "kind": "saved_simulation_surface_meshes",
+      "source_catalog": "authoring-workspace:outputs/fiction-scene-visuals-20261103/provenance.json",
+      "generator": "authoring-workspace:outputs/fiction-scene-visuals-20261103/generate_scenes.py",
+      "inputs": [
+        "local-archive:fiction/simulator/output/validation/s3-visual-main-20261102-01/config-visual.json",
+        "local-archive:fiction/simulator/output/validation/s3-visual-main-20261102-01/raw_frames/frame_0000.obj",
+        "local-archive:fiction/simulator/output/validation/s3-visual-main-20261102-01/raw_frames/frame_0005.obj",
+        "local-archive:fiction/simulator/output/validation/s3-visual-main-20261102-01/raw_frames/frame_0010.obj"
+      ],
+      "output_sha256": "a212eda00253103c1debf987fa0867ad018cad161517dbaf9e940c014d30cedb"
+    }
+  ],
+  "revision_20261103": {
+    "scope": "S2 spatial error, S3 dissipation and adjacent-dt differences on M2/M3/M4, current C++ stopping criteria",
+    "new_physical_simulations": false,
+    "new_html": false,
+    "asset_changes": false,
+    "sources": [
+      {
+        "path": "local-archive:fiction/simulator/cpp/include/time_integrator.h",
+        "sha256": "853a639013008b9f4713f09b72d448bb6a7a07dcbb5d9e3858ca860b576dc1b4"
+      },
+      {
+        "path": "local-archive:fiction/simulator/cpp/src/time_integrator.cpp",
+        "sha256": "bde04f10324d3c2f16b15b3f46ace45dbd20195844f983aeeb13b99b130497b6"
+      },
+      {
+        "path": "local-archive:fiction/simulator/docs/stopcriterion-merge-20261102.md",
+        "sha256": "0756f1aa51b44e510f29b7a212ca9fc6ced815f28e398264b58d4b7e88c7a34d"
+      },
+      {
+        "path": "local-archive:fiction/simulator/docs/stopcriterion-corrected-review-20261102.md",
+        "sha256": "09a5967e753996a7def25fd3a5c73e83dc05a4f8818fe738e3b790206111a94d"
+      },
+      {
+        "path": "local-archive:fiction/simulator/output/validation/stopcriterion-merge-20261102-01/summary.json",
+        "sha256": "60e2fa5d0c4d55e9fb23edf580e1b24c3f2870fa27ad36b1636b6d841849dfe4"
+      },
+      {
+        "path": "local-archive:fiction/figures/validation/s2-extension-20261031-01/refinement-fit.json",
+        "sha256": "f92b090b79c77bda83e72bec2000d239f51ffabd81359ec3c4fe5486af8b452c"
+      },
+      {
+        "path": "local-archive:fiction/simulator/output/validation/s3-dtmesh-20261102-01/M2/dt-0.005/steps.csv",
+        "sha256": "3db3b0685090cbc943d5adb7519effec5b7a969cfa5f17844027da29a05c4ce0"
+      },
+      {
+        "path": "local-archive:fiction/simulator/output/validation/s3-dtmesh-20261102-01/M2/dt-0.0025/steps.csv",
+        "sha256": "45964b389ad91568f3595b02022f0c84bde31c18c7236f0a5970bfb3b0ecd1f6"
+      },
+      {
+        "path": "local-archive:fiction/simulator/output/validation/s3-dtmesh-20261102-01/M2/dt-0.00125/steps.csv",
+        "sha256": "162279c55f59cef978d263db47b8e6854f09ed475d14bfe24e6564325d952e73"
+      },
+      {
+        "path": "local-archive:fiction/simulator/output/validation/s3-dtmesh-ref-20261102-01/M2/dt-0.000625/steps.csv",
+        "sha256": "9bd196386c9f1b2f8e1b2788f54884e156f6a869840b127901bb96e4c4c6f7de"
+      },
+      {
+        "path": "local-archive:fiction/simulator/output/validation/s3-dtmesh-20261102-01/M3/dt-0.005/steps.csv",
+        "sha256": "ee478369f4d482240379eec5310620ac1500b17709b43e469b35c1cefe0f1941"
+      },
+      {
+        "path": "local-archive:fiction/simulator/output/validation/s3-dtmesh-20261102-01/M3/dt-0.0025/steps.csv",
+        "sha256": "f4339595fdff4d35010332ade2eab37abf5957773b2e8084f07a766bde377d60"
+      },
+      {
+        "path": "local-archive:fiction/simulator/output/validation/s3-dtmesh-20261102-01/M3/dt-0.00125/steps.csv",
+        "sha256": "c885d136272502a3b5aa801c90d5c45d87838ca1ece61beb0cda01e9c4541032"
+      },
+      {
+        "path": "local-archive:fiction/simulator/output/validation/s3-dtmesh-ref-20261102-01/M3/dt-0.000625/steps.csv",
+        "sha256": "9d64ad7ca7be758d2eccf2c5e24f89760d9104d551a3bd03575ce449c4cb0a43"
+      },
+      {
+        "path": "local-archive:fiction/simulator/output/validation/s3-dtmesh-20261102-01/M4/dt-0.005/steps.csv",
+        "sha256": "99dd6d870586ab161e5128e8cb9b030d1ae65ec5fb910180af510b5ea35792df"
+      },
+      {
+        "path": "local-archive:fiction/simulator/output/validation/s3-dtmesh-20261102-01/M4/dt-0.0025/steps.csv",
+        "sha256": "0835550a98dfd24850af9582f0d75d85b2f398ef58ceb83875c99ea0d6fcbab0"
+      },
+      {
+        "path": "local-archive:fiction/simulator/output/validation/s3-dtmesh-20261102-01/M4/dt-0.00125/steps.csv",
+        "sha256": "927490a923085b6ef7f92f442b263f703c3eb8bb8f784433dee0923b24eb9d1d"
+      },
+      {
+        "path": "local-archive:fiction/simulator/output/validation/s3-dtmesh-ref-20261102-01/M4/dt-0.000625/steps.csv",
+        "sha256": "db532d45c1b9c9ffa7d72c0bf13813cd13afc22c2a518078bf15e40bbe47cc33"
+      }
+    ]
+  },
+  "readable_titles_revision": {
+    "date": "2026-11-03",
+    "scope": "reader-facing experiment names in article, captions, source labels and six plots",
+    "replotted_assets": [
+      "assets/s6a-sixteen.png",
+      "assets/t0-oscillator.png",
+      "assets/s1-tension-reaction.png",
+      "assets/s2-mesh-refinement.png",
+      "assets/s3-original-trajectories.png",
+      "assets/s3t-angle-torque.png"
+    ],
+    "new_physical_simulations": false,
+    "generators": [
+      {
+        "path": "make_figures.py",
+        "sha256": "15db9c2dc7b1139c4901ecd861b9960e3c1f4a559079f6aa9d67ba3f202d31e9"
+      },
+      {
+        "path": "make_multibody_figure.py",
+        "sha256": "3ca9e0baf99526469bfddcd1e22a83203f96aa32ce6688ae36ce32ccc707a12e"
+      }
+    ]
+  },
+  "scene_integration_20261103": {
+    "polished_input_sha256": "c840fbec46c8a2bc1b6990f4d36322b7e24249aefde03154e87ea32cc3fac341",
+    "polished_text_preserved": true,
+    "new_scene_figures": 10,
+    "total_numbered_figures": 21,
+    "source_manifest": "authoring-workspace:outputs/fiction-scene-visuals-20261103/provenance.json",
+    "new_physical_simulations": false,
+    "html_generated": false
+  },
+  "transition_polish_20261103": {
+    "transition_edits": 19,
+    "character_delta": 451,
+    "math_expressions_unchanged": 168,
+    "numeric_tokens_unchanged": true,
+    "tables_headings_images_captions_links_unchanged": true,
+    "original_sha256": "3de139bac169ba5c92b70518035a43543bc0588ca9614cda3c0b9d8fc7f54c1c",
+    "new_sha256": "d80af6e569675fd31afbc90ff57b04b9b885e566c9bdabc5245d1a9a84cfbc73"
+  },
+  "archive_reference_note": "Archive references identify original inputs that are not all distributed in this repository; see SOURCES.md."
+}

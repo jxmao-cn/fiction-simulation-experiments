@@ -1,0 +1,35 @@
+name: C++ checks
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  headless:
+    runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: false
+      matrix:
+        cholmod: ['OFF', 'ON']
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install -y libeigen3-dev libsuitesparse-dev zlib1g-dev
+      - name: Configure
+        run: cmake -S simulator/cpp -B build -DCMAKE_BUILD_TYPE=Release -DFICTION_USE_VIEWER=OFF -DFICTION_USE_CHOLMOD=${{ matrix.cholmod }}
+      - name: Build
+        run: cmake --build build --parallel 2
+      - name: Test
+        run: ctest --test-dir build --output-on-failure
+      - name: Run README example
+        run: >-
+          ./build/ipc_mesh_demo --mesh simulator/cpp/tests/data/cube.msh
+          --material nh --youngs 1e6
+          --pin-box -0.01 -0.01 -0.01 0.01 1.01 1.01
+          --dt 0.005 --steps 10 --tol 1e-6
+          --export output/quickstart --export-every 5
+      - name: Check exported frames
+        run: test -s output/quickstart/0.obj && test -s output/quickstart/5.obj && test -s output/quickstart/10.obj

@@ -322,6 +322,11 @@ if(TARGET ipc_mesh_demo)
     add_test(NAME ipc_mesh_demo_smoke
              COMMAND ipc_mesh_demo --mesh ${CMAKE_CURRENT_SOURCE_DIR}/tests/data/cube.msh
                      --no-gravity --steps 2 --tol 1e-6)
+    add_test(NAME ipc_cli_regression
+             COMMAND ${CMAKE_COMMAND}
+                     -DTOOL=$<TARGET_FILE:ipc_mesh_demo>
+                     -DMESH=${CMAKE_CURRENT_SOURCE_DIR}/tests/data/cube.msh
+                     -P ${CMAKE_CURRENT_SOURCE_DIR}/tests/cli_regression.cmake)
 endif()
 if(TARGET simulator_visual)
     add_test(NAME simulator_visual_build_only

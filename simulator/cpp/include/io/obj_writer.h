@@ -32,6 +32,7 @@ inline bool writeSurfaceObj(const std::string& path,
     for (const auto& f : faces) {
         out << "f " << (f[0] + 1) << ' ' << (f[1] + 1) << ' ' << (f[2] + 1) << '\n';
     }
+    out.close(); // 将缓冲区写入错误也纳入返回值，而非等析构时静默丢失。
     return static_cast<bool>(out);
 }
 

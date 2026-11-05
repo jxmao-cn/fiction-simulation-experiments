@@ -29,6 +29,7 @@ inline bool writePpm(const std::string& path, int w, int h,
     out << "P6\n" << w << " " << h << "\n255\n";
     out.write(reinterpret_cast<const char*>(rgb.data()),
               static_cast<std::streamsize>(rgb.size()));
+    out.close(); // 关闭时刷新缓冲区，捕获磁盘满等延迟写入错误。
     return static_cast<bool>(out);
 }
 
@@ -94,6 +95,7 @@ inline bool writePng(const std::string& path, int w, int h,
     writeChunk("IHDR", ihdr, sizeof(ihdr));
     writeChunk("IDAT", comp.data(), comp.size());
     writeChunk("IEND", nullptr, 0);
+    out.close();
     return static_cast<bool>(out);
 }
 #endif // FICTION_HAS_ZLIB

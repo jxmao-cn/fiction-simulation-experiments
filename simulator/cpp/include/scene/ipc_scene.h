@@ -25,8 +25,10 @@
 
 #include <algorithm>
 #include <array>
+#include <cmath>
 #include <cstdlib>
 #include <iostream>
+#include <limits>
 #include <memory>
 #include <sstream>
 #include <string>
@@ -80,7 +82,7 @@ inline bool parseDouble(const std::string& tok, double& out) {
     try {
         size_t pos = 0;
         out = std::stod(tok, &pos);
-        return pos == tok.size();
+        return pos == tok.size() && std::isfinite(out);
     } catch (const std::exception&) {
         return false;
     }
@@ -90,7 +92,7 @@ inline bool parseInt(const std::string& tok, int& out) {
     try {
         size_t pos = 0;
         const long v = std::stol(tok, &pos);
-        if (pos != tok.size() || v < 0) return false;
+        if (pos != tok.size() || v < 0 || v > std::numeric_limits<int>::max()) return false;
         out = static_cast<int>(v);
         return true;
     } catch (const std::exception&) {
@@ -267,6 +269,8 @@ inline IpcParseResult parseIpcSceneOptions(const std::vector<std::string>& args,
     }
     if (opt.density <= 0.0) { err = "--density 必须为正"; return IpcParseResult::Error; }
     if (opt.dt <= 0.0) { err = "--dt 必须为正"; return IpcParseResult::Error; }
+    if (opt.tol <= 0.0) { err = "--tol 必须为正"; return IpcParseResult::Error; }
+    if (opt.youngs <= 0.0) { err = "--youngs 必须为正"; return IpcParseResult::Error; }
     if (opt.exportEvery <= 0) { err = "--export-every 必须为正"; return IpcParseResult::Error; }
     if (opt.videoFps <= 0.0) { err = "--video-fps 必须为正"; return IpcParseResult::Error; }
     if (opt.videoWidth <= 0 || opt.videoHeight <= 0) {

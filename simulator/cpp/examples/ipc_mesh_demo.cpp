@@ -6,7 +6,7 @@
 //   - 装配 mass-spring（tet 唯一边）+ 集中质量 + pin-box DBC + force-box 外力
 //   - 隐式欧拉 + projected Newton 推进，可选导出 OBJ 帧
 //   - 可选导出 mp4 视频：CPU 软光栅化（无 OpenGL 依赖）+ ffmpeg，SSH 远程可用
-//   - 结束时自检结果有限（无 NaN/Inf）；退出码 0/1 可供 ctest 捕获
+//   - 每步检查收敛与有限性；输出写入失败非零退出，可供 ctest 捕获
 //
 // 用法：./ipc_mesh_demo --mesh <path.msh> [选项...]（详见 --help）
 // =============================================================================
@@ -26,6 +26,7 @@
 #include <iomanip>
 #include <iostream>
 #include <sstream>
+#include <stdexcept>
 #include <string>
 #include <vector>
 
@@ -57,7 +58,8 @@ int main(int argc, char** argv) {
 
     try {
         fiction::IpcScene scene = fiction::buildIpcScene(opt);
-        std::cout << "===== fiction IPC 模型仿真（mass-spring）=====\n"
+        std::cout << "===== fiction IPC 模型仿真（"
+                  << (opt.material == "nh" ? "Neo-Hookean FEM" : "mass-spring") << "）=====\n"
                   << fiction::ipcSceneSummary(scene, opt) << "\n";
 
         fiction::TimeIntegrator::Config cfg;
@@ -80,7 +82,8 @@ int main(int argc, char** argv) {
                           << ": " << ec.message() << "\n";
                 return 1;
             }
-            fiction::writeSurfaceObj(opt.exportDir + "/0.obj", scene.model.x0, scene.mesh.surface);
+            if (!fiction::writeSurfaceObj(opt.exportDir + "/0.obj", scene.model.x0, scene.mesh.surface))
+                throw std::runtime_error("OBJ 写出失败: " + opt.exportDir + "/0.obj");
         }
 
         // 视频模式准备（CPU 软光栅化，无显示环境可用）
@@ -140,8 +143,7 @@ int main(int argc, char** argv) {
             std::vector<unsigned char> rgb;
             renderer.downsample(rgb);
             if (!fiction::writeImage(framePath(framesDir, frameIndex, ext), videoW, videoH, rgb)) {
-                std::cerr << "[ipc_mesh_demo] 帧写出失败: " << framePath(framesDir, frameIndex, ext)
-                          << "\n";
+                throw std::runtime_error("帧写出失败: " + framePath(framesDir, frameIndex, ext));
             }
             ++frameIndex;
         };
@@ -156,12 +158,25 @@ int main(int argc, char** argv) {
         for (int step = 1; step <= opt.steps; ++step) {
             fiction::refreshIpcDbcTargets(scene, opt, step * opt.dt); // 扭转 DBC 轨迹
             const auto state = integrator.stepForward(x, v, scene.dbc);
+            // 非有限状态或未收敛都必须中止，不能把失败状态继续当成下一步初态。
+            if (!state.report.converged || !state.x.allFinite() || !state.v.allFinite()) {
+                std::cerr << "[FAIL] step=" << step << " time=" << step * opt.dt
+                          << " stop_reason=" << state.report.stopReason
+                          << " converged=" << state.report.converged
+                          << " iterations=" << state.report.iterations
+                          << " direction_rate=" << state.report.searchDirectionRate
+                          << " force_residual=" << state.report.forceResidualInf
+                          << " dbc_error=" << state.report.dbcMaxError
+                          << "; simulation stopped; completed_steps=" << (step - 1) << "\n";
+                return 1;
+            }
             x = state.x;
             v = state.v;
             if (step % opt.exportEvery == 0) {
                 if (exporting) {
-                    fiction::writeSurfaceObj(opt.exportDir + "/" + std::to_string(step) + ".obj",
-                                             x, scene.mesh.surface);
+                    const std::string objPath = opt.exportDir + "/" + std::to_string(step) + ".obj";
+                    if (!fiction::writeSurfaceObj(objPath, x, scene.mesh.surface))
+                        throw std::runtime_error("OBJ 写出失败: " + objPath);
                 }
                 if (rendering) renderFrame(x, step * opt.dt);
             }

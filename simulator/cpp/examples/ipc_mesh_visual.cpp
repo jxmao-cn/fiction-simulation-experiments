@@ -21,6 +21,7 @@
 #include <filesystem>
 #include <iomanip>
 #include <iostream>
+#include <stdexcept>
 #include <string>
 #include <vector>
 
@@ -45,7 +46,8 @@ int main(int argc, char** argv) {
                          "视频导出请用 ipc_mesh_demo（CPU 软光栅化，SSH 可用）\n";
         }
         fiction::IpcScene scene = fiction::buildIpcScene(opt);
-        std::cout << "===== fiction IPC 模型可视化（mass-spring）=====\n"
+        std::cout << "===== fiction IPC 模型可视化（"
+                  << (opt.material == "nh" ? "Neo-Hookean FEM" : "mass-spring") << "）=====\n"
                   << fiction::ipcSceneSummary(scene, opt) << "\n";
 
         fiction::TimeIntegrator::Config cfg;
@@ -81,7 +83,8 @@ int main(int argc, char** argv) {
                           << ": " << ec.message() << "\n";
                 return 1;
             }
-            fiction::writeSurfaceObj(opt.exportDir + "/0.obj", scene.model.x0, scene.mesh.surface);
+            if (!fiction::writeSurfaceObj(opt.exportDir + "/0.obj", scene.model.x0, scene.mesh.surface))
+                throw std::runtime_error("OBJ 写出失败: " + opt.exportDir + "/0.obj");
         }
 
         // pin / 外力节点高亮掩码
@@ -93,6 +96,7 @@ int main(int argc, char** argv) {
 
         fiction::Positions x = scene.model.x0;
         fiction::Velocities v = fiction::Velocities::Zero(scene.model.numNodes(), fiction::kDim);
+        if (opt.initVel.squaredNorm() > 0.0) v.rowwise() = opt.initVel.transpose();
 
         const fiction::Vec3 groundOrigin(center.x(), center.y(), scene.model.bbox[2]);
         const double groundExtent = std::max(diag * 1.5, 1.0);
@@ -115,15 +119,22 @@ int main(int argc, char** argv) {
 
             if (!viewer.paused() && viewer.stepsPerFrame() > 0) {
                 for (int k = 0; k < viewer.stepsPerFrame(); ++k) {
-                    fiction::refreshIpcDbcTargets(scene, opt, step * opt.dt); // 扭转 DBC 轨迹
+                    // 与控制台一致：本次求解的目标位置对应下一时刻，而非当前时刻。
+                    fiction::refreshIpcDbcTargets(scene, opt, (step + 1) * opt.dt);
                     const auto state = integrator.stepForward(x, v, scene.dbc);
+                    if (!state.report.converged || !state.x.allFinite() || !state.v.allFinite()) {
+                        std::cerr << "[FAIL] step=" << (step + 1)
+                                  << " stop_reason=" << state.report.stopReason
+                                  << "; simulation stopped; completed_steps=" << step << "\n";
+                        return 1;
+                    }
                     x = state.x;
                     v = state.v;
                     ++step;
                     if (exporting && step % opt.exportEvery == 0) {
-                        fiction::writeSurfaceObj(
-                            opt.exportDir + "/" + std::to_string(step) + ".obj",
-                            x, scene.mesh.surface);
+                        const std::string objPath = opt.exportDir + "/" + std::to_string(step) + ".obj";
+                        if (!fiction::writeSurfaceObj(objPath, x, scene.mesh.surface))
+                            throw std::runtime_error("OBJ 写出失败: " + objPath);
                     }
                 }
             }

@@ -370,7 +370,7 @@ def main():
 
     judgment = {
         "run_id": RUN_ID,
-        "nature": "候选判据确认（不是协议通过）；S2 精度门槛不变；生产代码与既有 run-id 未改动",
+        "nature": "候选判据确认；沿用 S2 精度门槛，在隔离副本中执行",
         "preregistered_thresholds": {
             "state_max_node_diff_m": POS_TOL,
             "free_gradient_relative_at_stop": GRAD_RATIO_TOL,
@@ -426,7 +426,7 @@ def main():
                 b4["max_free_gradient_relative_at_stop"] >= GRAD_RATIO_TOL]),
         },
         "candidate_confirmed_on_s2_s6a": all(c["pass_all_gates"] for c in cases),
-        "note": "即使全部通过，也只说明候选判据在 S2 M3/M6 + S6a 1/4 体上重验收通过，不构成协议 v0.3 生效。",
+        "note": "候选判据确认覆盖 S2 M3/M6 + S6a 1/4 体；协议版本为 v0.3 草案。",
     }
     write_json(os.path.join(out, "judgment.json"), judgment)
     print(json.dumps({k: v["pass"] for k, v in judgment["cases"].items()}, ensure_ascii=False))

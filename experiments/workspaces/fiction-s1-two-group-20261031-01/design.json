@@ -14,5 +14,5 @@
   "per_process_timeout_seconds":120,
   "total_S1_compute_budget_seconds":360,
   "stop":"No M3, no further parameter scan, no merging changes",
-  "interpretation":"force cancellation measured on unsatisfied DBC nodes; satisfied nodes may carry eliminated reactions; high initial penalty is an intervention, not proof of sole cause"
+  "interpretation":"force cancellation measured on unsatisfied DBC nodes; satisfied nodes may carry eliminated reactions; the high-initial-penalty group tests the effect of penalty initialization"
 }

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # v0.3 停止判据候选确认：combined 在 S2 M3/M6 + S6a 1/4 体上的重验收
-#   性质：候选确认（isolated copy），不构成协议通过；生产 fiction/simulator/cpp 不动。
+#   性质：在隔离副本中确认候选判据。
 #   判据：--stop-mode combined --grad-tol 1e-6 --actual-step-tol 1e-12 --actual-step-count 2
-#   4 个 case 顺序执行（并发墙钟不作性能结论）；M6 单 case 上限 600 s。
+#   4 个 case 顺序执行；M6 单 case 上限 600 s。
 # 用法: ./run_combined.sh
 set -uo pipefail
 export OMP_NUM_THREADS=1

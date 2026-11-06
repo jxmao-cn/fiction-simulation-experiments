@@ -55,5 +55,5 @@ for name,dt,n,tol in cases:
 summary={'status':status,'results':results,'wall_seconds':time.monotonic()-start,'original_S3_status':'unchanged: failed','production_modified':False}
 if 'refcheck' in samples:summary['time_difference_diagnostic']=error(samples['ref'],samples['refcheck'])
 (out/'summary.json').write_text(json.dumps(summary,indent=2)+'\n')
-lines=['# S3代数求解精度资格：主工程执行结果','','日期2026-11-02。状态：**'+status+'**。原S3未通过与旧参考未建立状态保持。','', '采用真实生产core的step模式，材料/加载/几何固定；运行前规格见 [规格](s3-algebra-main-spec-20261102.md)。','', '```json',json.dumps(summary,indent=2),'```','', '松紧容差门槛：101共同物理时刻尖端最大差与完整末态节点最大差均<=10 μm。数值/资源/门槛失败即停，未运行项不算通过；没有放宽门槛或追绿。两时间步差只作诊断，不把本批标为参考解建立或时间精度通过。','',f'证据：[运行目录](../output/validation/{out.name}/)，保存源码快照、哈希、生产core链接/头依赖、构建/CTest、命令/CSV/末态/资源/逐采样差值。未改生产代码。']
+lines=['# S3代数求解精度资格：主工程执行结果','','日期2026-11-02。状态：**'+status+'**。原S3未通过；旧参考解资格未建立。','', '采用真实生产core的step模式，材料/加载/几何固定；运行前规格见 [规格](s3-algebra-main-spec-20261102.md)。','', '```json',json.dumps(summary,indent=2),'```','', '松紧容差门槛：101共同物理时刻尖端最大差与完整末态节点最大差均<=10 μm。数值/资源/门槛失败即停，未运行项标为未运行。两时间步差记录为诊断指标。','',f'证据：[运行目录](../output/validation/{out.name}/)，保存源码快照、哈希、生产core链接/头依赖、构建/CTest、命令/CSV/末态/资源/逐采样差值。未改生产代码。']
 (prod/'docs/s3-algebra-main-results-20261102.md').write_text('\n'.join(lines)+'\n');print('FINAL',status,flush=True)

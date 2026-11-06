@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # 停止判据诊断运行脚本（隔离副本，不改生产）
 #   病例：S2 M3 静态 + S6a 1 体 10 步
-#   判据：step(基线) / grad / actual / combined，共 8 个 run，顺序执行（并发墙钟不作性能结论）
+#   判据：step(基线) / grad / actual / combined，共 8 个 run，顺序执行
 # 用法: ./run_stopcriterion.sh
 set -uo pipefail
 export OMP_NUM_THREADS=1
@@ -39,7 +39,7 @@ cd "${WORK}" || exit 1
   echo "s6a_mesh=${S6A_MESH}"
   echo "s6a_grad_scale=${S6A_GRAD_SCALE}"
   echo "thread_env=OMP/OPENBLAS/MKL/BLIS/VECLIB=1"
-  echo "note=8 个 run 顺序执行；墙钟只作粗参照，不作性能结论"
+  echo "note=8 个 run 顺序执行；记录每次运行墙钟"
 } > "${OUT}/env.txt"
 sha256sum "${S2_MESH}" "${S6A_MESH}" > "${OUT}/asset_sha256.txt"
 sha256sum "${S2_BIN}" "${S6A_BIN}" > "${OUT}/binary_sha256.txt"

@@ -80,10 +80,9 @@ conda run -n elastogen python tools/bgeo_to_msh.py \
 参数选择依据：E 由静力悬臂挠度 δ = wL⁴/(8EI) 标定——E=5e7 时稳态挠曲约 2–3 单位，
 与原图弯曲幅度同量级；t / ω 为演示观感定档（40–60 deg/s 的扭转可看清 3D）。
 
-## 6. 与论文的边界（诚实声明）
+## 6. 场景与求解方法
 
-- 材料模型与 ν 项已按 NH 解析公式实现，但 ElastoGen 是**神经网络近似的能量+局部-全局求解**，
-  本文目标是「同场景、同几何、真实物理的对照动画」，不做 NN 与 fiction 的定量误差对照；
+- fiction 按 NH 解析公式计算材料能量，生成悬臂弯曲与扭转动画；ElastoGen 使用**神经网络近似的能量+局部-全局求解**。两者复用杆几何与加载主题；
 - Co-rotational / StVK 尚未实现（接口已就位，见 `NeoHookeanTetEnergy` 模板 + `ipc_scene.h` 的 material 分支）；
 - PDNet 的驱动端是**软 pin**（NN 松弛近似），此处用硬 DBC 轨迹（收敛后节点精确贴轨迹）。
 

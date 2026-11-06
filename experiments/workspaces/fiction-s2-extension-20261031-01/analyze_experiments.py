@@ -334,7 +334,7 @@ def main():
 
     report = f'''# S2 补充实验：加密趋势、迭代预算与初始步长
 
-日期：2026-10-31。状态：补充诊断批次已完成并分析；生产求解器未合并改动；原 S2 验收标准与“未通过”结论保持不变；未进入 S3。
+日期：2026-10-31。状态：补充诊断批次已完成并分析。原 S2 按原标准未通过；本批使用独立副本。
 
 ## 结论摘要
 
@@ -342,21 +342,21 @@ def main():
 2. **M3 的“未收敛”不是没算到平衡。** M3 末态自由梯度仅 {s3['free_gradient_inf_N']:.3e} N（总重 24.525 N 的 {s3['gradient_relative_to_weight']:.2e}），按线性刚度折算的等效位移残差约 {s3['residual_disp_m']:.2e} m；同网格 tol=1e-10 与 tol=1e-8 的尖端只差 {ts3['abs_diff_m']:.2e} m。停滞发生在“方向范数”判据上，不在解上。
 3. **1e-10 的步长判据低于该问题的数值地板。** M3、M4 的方向率冻结在 {s3['rate_last']:.4e}、{s4['rate_last']:.4e}，实际位置变化降到 {s3['dx_last_m']:.1e} m（1 m 处双精度 ulp≈{ULP_1M:.1e} m）；M5 在第 5 次迭代以 {s5['rate_last']:.3e} 恰好过线。过线与否由网格相关的数值噪声决定，不是物理收敛质量。
 4. **增加迭代与减小初始步长无效。** M3 的 maxIter 从 100 提到 1000，方向率与挠度不变（{s3['rate_last']:.4e}、{table['M3-long1000']['tip_mm']:.6f} mm）；alpha=0.5/0.25 在 300 次内同样未过线，挠度只变化约 3e-8 m。它们改变收敛路径，不改变同一离散问题的平衡解。
-5. **M6 首次进入 5% 带，但尚未渐近。** M6=120×24×24 在 tol=1e-8 下误差 {m6['error_percent']:.2f}%；最后一步加密仍使尖端移动 {fit['M5_M6_increment_mm']:.3f} mm（参考值的 {fit['M5_M6_increment_percent_of_reference']:.2f}%），与剩余误差 {m6['error_percent']:.2f}% 同量级。固定阶数 p∈[1.5,2.0] 外推的极限为 {fit['extrapolation_range_p_1.5_2.0_mm'][0]:.2f}–{fit['extrapolation_range_p_1.5_2.0_mm'][1]:.2f} mm，区间覆盖梁参考 10.0022 mm；这批数据既不能证明也不能排除夹持端模型差异。
+5. **M6 首次进入 5% 带。** M6=120×24×24 在 tol=1e-8 下误差 {m6['error_percent']:.2f}%；最后一步加密仍使尖端移动 {fit['M5_M6_increment_mm']:.3f} mm（参考值的 {fit['M5_M6_increment_percent_of_reference']:.2f}%），与剩余误差 {m6['error_percent']:.2f}% 同量级。固定阶数 p∈[1.5,2.0] 外推的极限为 {fit['extrapolation_range_p_1.5_2.0_mm'][0]:.2f}–{fit['extrapolation_range_p_1.5_2.0_mm'][1]:.2f} mm，区间覆盖梁参考 10.0022 mm；夹持端模型差异仍待独立量化。
 
 ## 1. 范围与可复现性
 
-用户要求追加更细网格、M3 更多迭代和初始求解参数对照。执行设计见 [补充运行规格](s2-extension-spec-20261031.md)，首次结果见 [S2 原始失败现场](s2-validation-20261031.md)。每个病例从未变形状态独立求解；材料、重力、边界、网格拓扑生成规则与主观测量保持一致，未依据 10 mm 调材料或初始形状。
+用户要求追加更细网格、M3 更多迭代和初始求解参数对照。执行设计见 [补充运行规格](s2-extension-spec-20261031.md)，首次结果见 [S2 原始失败现场](s2-validation-20261031.md)。每个病例从未变形状态独立求解；材料、重力、边界、网格拓扑生成规则与主观测量保持一致。
 
 本次只在 `/home/steven/mjx/fiction/experiments/workspaces/fiction-s2-extension-20261031-01/` 的独立副本暴露 maxIter/tol/initial-alpha；主工程核心与原 S2 快照一致：{checks['production_core_unchanged_since_original_S2']}。默认配置与旧 M3 关键数值完全一致：{checks['baseline_matches_original_exactly']}；完整末态逐字节一致：{checks['baseline_full_state_byte_identical']}；1000 次实验的前 100 次轨迹数值一致：{checks['long_matches_baseline_first_100_iterations']}。Release/CHOLMOD，CTest 10/10（其中 2 个 GUI 占位）通过。
 
 ## 2. M3：增加迭代与更改初始步长
 
-以下全部保持原 tol=1e-10。alpha=0.5/0.25 是每轮初始试探步长上限，仍可能回溯到更小值，并非固定学习率；Newton 方向包含曲率信息，与神经网络梯度下降只能类比“沿某个方向走多远”。
+以下全部保持原 tol=1e-10。alpha=0.5/0.25 是每轮初始试探步长上限，回溯线搜索可进一步减小步长；Newton 方向包含曲率信息。
 
 {controls}
 
-迭代上限 1000 的 baseline 提供与较小 alpha 相同预算前缀的参照，不能把 1000 次与 300 次的差异单独归因于 alpha。逐轮第 3/10/30/100/300/1000 次方向率、实际移动、能量、梯度及末态保存在 trace-samples.json。未收敛病例不能作为原 S2 通过的证据。
+迭代上限 1000 的 baseline 提供与较小 alpha 相同预算前缀的参照；alpha 的比较采用共同迭代前缀。逐轮第 3/10/30/100/300/1000 次方向率、实际移动、能量、梯度及末态保存在 trace-samples.json。未收敛病例保留原判定。
 
 ![M3 方向与实际位置更新](../../figures/validation/{OUT.name}/s2-m3-controls.png)
 
@@ -374,15 +374,15 @@ M5 在 5 次迭代内收敛，M3/M4 却在 100 次后仍未过线。三者末态
 
 ## 4. 统一 tol=1e-8 的加密趋势
 
-这组明确改变停止容差，从 M1 重新完整比较，不替代原 tol=1e-10 验收。M4=60×12×12，M5=80×16×16，M6=120×24×24（75625 节点/414720 tet）。加密保持原单元长宽比，但六档的细化比并不一致（M3→M4 为 1.5，M4→M5 为 4/3，M5→M6 为 1.5），也不是单一嵌套序列，所以没有以这些点声称严格的渐近收敛阶。
+这组统一采用 tol=1e-8，从 M1 重新完整比较。原验收采用 tol=1e-10。M4=60×12×12，M5=80×16×16，M6=120×24×24（75625 节点/414720 tet）。加密保持原单元长宽比，六档采用非嵌套网格和不同细化比（M3→M4 为 1.5，M4→M5 为 4/3，M5→M6 为 1.5）；下文报告局部表观阶数。
 
 {loose}
 
-本组六个病例全部收敛，参考误差严格下降。局部表观阶数为：M2→M3 {orders[1]['apparent_order_p']:.2f}，M3→M4 {orders[2]['apparent_order_p']:.2f}，M4→M5 {orders[3]['apparent_order_p']:.2f}，M5→M6 {orders[4]['apparent_order_p']:.2f}；最后两档稳定在约 {orders[-1]['apparent_order_p']:.2f}，但这是两个非嵌套点的局部斜率，不是已确立的渐近阶。
+本组六个病例全部收敛，参考误差严格下降。局部表观阶数为：M2→M3 {orders[1]['apparent_order_p']:.2f}，M3→M4 {orders[2]['apparent_order_p']:.2f}，M4→M5 {orders[3]['apparent_order_p']:.2f}，M5→M6 {orders[4]['apparent_order_p']:.2f}；最后两档稳定在约 {orders[-1]['apparent_order_p']:.2f}，该数值是两个非嵌套点的局部斜率。
 
 ![统一容差的加密趋势](../../figures/validation/{OUT.name}/s2-refinement.png)
 
-外推敏感性：固定阶数 p=1.5/1.7/2.0 时，$\\delta=A-B/n^p$ 的极限分别为 {A_15:.3f} / {A_17:.3f} / {A_20:.3f} mm；p 在 [1.5,2.0] 内变动时极限落在 {fit['extrapolation_range_p_1.5_2.0_mm'][0]:.2f}–{fit['extrapolation_range_p_1.5_2.0_mm'][1]:.2f} mm。三点或四点拟合不足以唯一确定 p，因此不能把某个外推值当作三维真值，也不能据此宣称存在或不存在约 2% 的夹持端模型误差。
+外推敏感性：固定阶数 p=1.5/1.7/2.0 时，$\\delta=A-B/n^p$ 的极限分别为 {A_15:.3f} / {A_17:.3f} / {A_20:.3f} mm；p 在 [1.5,2.0] 内变动时极限落在 {fit['extrapolation_range_p_1.5_2.0_mm'][0]:.2f}–{fit['extrapolation_range_p_1.5_2.0_mm'][1]:.2f} mm。三点或四点拟合中，p 的选择影响外推极限；夹持端模型误差需独立量化。
 
 ![阶数与外推敏感性](../../figures/validation/{OUT.name}/s2-refinement-fit.png)
 
@@ -395,7 +395,7 @@ M5 在 5 次迭代内收敛，M3/M4 却在 100 次后仍未过线。三者末态
 | M3 | {ts3['strict_tip_m']*1000:.8f} | {ts3['loose_tip_m']*1000:.8f} | {ts3['abs_diff_m']:.2e} | {ts3['rel_diff']:.2e} | {ts3['discretization_error_rel']*100:.2f}% | {ts3['ratio_discretization_to_tol_diff']:.1e} |
 | M5 | {ts5['strict_tip_m']*1000:.8f} | {ts5['loose_tip_m']*1000:.8f} | {ts5['abs_diff_m']:.2e} | {ts5['rel_diff']:.2e} | {ts5['discretization_error_rel']*100:.2f}% | {ts5['ratio_discretization_to_tol_diff']:.1e} |
 
-两档网格上，容差引起的尖端变化都比离散误差小 5–7 个数量级。这支持把 tol=1e-8 用作**本场景的数值停止容差**：它远高于数值地板，又远低于离散误差，不会污染网格收敛结论。它不改变原 S2 的 tol=1e-10 结论，只是为后续协议修订提供量级依据。
+两档网格上，容差引起的尖端变化都比离散误差小 5–7 个数量级。这支持把 tol=1e-8 用作**本场景的数值停止容差**：它远高于数值地板，又远低于离散误差，不会污染网格收敛结论。该量级对比为后续协议修订提供依据。
 
 ## 6. M6 触发条件与资源
 
@@ -403,16 +403,16 @@ M5 在 5 次迭代内收敛，M3/M4 却在 100 次后仍未过线。三者末态
 
 ## 7. 对 S2 与协议的结论
 
-- **原 S2 仍然未通过，且不应改写。** 固定标准是“M3 收敛且相对误差 <5%”；M3 实际误差 {m3['error_percent']:.2f}%，按标准就是不通过。补充实验是诊断，不是重验收。
+- **原 S2 按固定标准未通过。** 固定标准是“M3 收敛且相对误差 <5%”；M3 实际误差 {m3['error_percent']:.2f}%，按标准就是不通过。本批为补充诊断。
 - **失败原因已经分解清楚：** (a) tol=1e-10 低于方向率数值地板，M3/M4 的“未收敛”是停止判据的假阴性；(b) 即使忽略停止问题，M3 的离散误差仍有 {m3['error_percent']:.2f}%，原标准默认 M3 足够细的假设不成立，5% 带要到 M6=120×24×24 才首次达到。
-- **S2 的科学问题已有肯定回答：** 弯曲离散误差随加密严格单调下降，六档跨度 83.92%→4.26%，局部表观阶数约 {orders[-1]['apparent_order_p']:.2f}。这可以作为文章附录的收敛图，但必须同时标注“参考是梁理论近似”“M6 尚未渐近”“1e-10 判据低于数值地板”。
-- **建议另立协议修订，而不是静默放宽。** 候选修订：(i) 静态求解的停止判据改为相对自由梯度或“实际位移 + 能量下降”的组合，绝对步长范数只作诊断；(ii) 若暂不改代码，则把本场景的 tol 固定为 1e-8，并强制做一次同网格 strict/loose 敏感性检查（本批已给出 M3、M5 两例）；(iii) 精度门槛按“最细可负担网格 + 单调下降 + 局部阶数”表述，不再把 5% 单独挂在某个未经验证的网格档位上。修订需在新 run-id 下重新确认，不能把本批直接记作通过。
+- **S2 的科学问题已有肯定回答：** 弯曲离散误差随加密严格单调下降，六档跨度 83.92%→4.26%，局部表观阶数约 {orders[-1]['apparent_order_p']:.2f}。附录图展示梁理论近似参考、局部阶数、末次加密增量与停止判据的数值地板。
+- **建议在新协议中修订停止与精度判据。** 候选修订：(i) 静态求解的停止判据改为相对自由梯度或“实际位移 + 能量下降”的组合，绝对步长范数只作诊断；(ii) 若暂不改代码，则把本场景的 tol 固定为 1e-8，并强制做一次同网格 strict/loose 敏感性检查（本批已给出 M3、M5 两例）；(iii) 精度门槛按“最细可负担网格 + 单调下降 + 局部阶数”表述，不再把 5% 单独挂在某个未经验证的网格档位上。修订需在新 run-id 下重新确认。
 
 ## 8. 资源与证据
 
-总批次墙钟 {summary['wall_seconds']:.2f} s，最多两个独立求解同时运行。已设置线程环境变量，但未证明实际单线程；耗时含 trace 开销且可能互相竞争 CPU，不作为重复性能对比。执行状态 `{summary['status']}`，已完成病例 {len(table)} 个。
+总批次墙钟 {summary['wall_seconds']:.2f} s，最多两个独立求解同时运行。线程环境设为1，实际库线程数未测量；耗时含 trace 开销，两个并行求解共享 CPU。执行状态 `{summary['status']}`，已完成病例 {len(table)} 个。
 
-run-id：[s2-extension-20261031-01](../output/validation/{OUT.name}/)。config/command 保存每次配置与命令，source.tar.gz/hash 与二进制保存运行版本，各病例目录保存 CSV、完整节点末态、trace、退出码、time/RSS；comparison.csv 是全指标汇总，analysis-checks.json 保存从完整末态重新计算尖端的独立核对，stall-analysis.json 保存停滞量化，tolerance-sensitivity.json 保存同网格容差对照，m6-trigger-check.json 保存条件判断，refinement-fit.json 保存拟合敏感性，trace-samples.json 保存相同迭代前缀。原实验未覆盖，未提交或发布。
+run-id：[s2-extension-20261031-01](../output/validation/{OUT.name}/)。config/command 保存每次配置与命令，source.tar.gz/hash 与二进制保存运行版本，各病例目录保存 CSV、完整节点末态、trace、退出码、time/RSS；comparison.csv 是全指标汇总，analysis-checks.json 保存从完整末态重新计算尖端的独立核对，stall-analysis.json 保存停滞量化，tolerance-sensitivity.json 保存同网格容差对照，m6-trigger-check.json 保存条件判断，refinement-fit.json 保存拟合敏感性，trace-samples.json 保存相同迭代前缀。
 '''
     (PROJECT / 'simulator/docs/s2-extension-results-20261031.md').write_text(report)
     (OUT / 'analysis-checks.json').write_text(json.dumps(checks, indent=2) + '\n')

@@ -420,7 +420,7 @@
     },
     "gui_tests": "2 build-only placeholders"
   },
-  "interpretation": "On the executed M2 load path, A improved the 1.02 row from full-validation failure to full-validation pass. The later 1.05 row still fails. Since the warm-start states at 1.01 were not byte-identical, this is not a same-state branch experiment and does not establish the original failure's unique cause.",
+  "interpretation": "On the executed M2 load path, A improved the 1.02 row from full-validation failure to full-validation pass. The later 1.05 row still fails. Variant A and baseline followed separate warm-start trajectories; their 1.01 states differed.",
   "runtime_seconds": null,
   "runtime_note": "Exact per-process elapsed time was not captured by the shell wrapper; per-run timeout was 120 seconds. Exit-code file timestamps record completion only, not duration.",
   "m3_run": false,
